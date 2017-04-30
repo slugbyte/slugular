@@ -7,7 +7,7 @@ module.exports = {
   devtool:  `eval`,
   entry: `${__dirname}/example/main.js`,
   output: {
-    path: `${__dirname}/doc`,
+    path: `${__dirname}/docs`,
     filename: 'bundle.js',
   },
   plugins: [
