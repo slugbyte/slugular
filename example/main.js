@@ -12,7 +12,7 @@ const App = (state) => {
     children: [
       Header(state),
       NoteCreate(),
-      $.unorderedList(state.notes.map(item => $('p', item.title)))
+      $.UnorderedList(state.notes.map(item => $('p', item.title)))
     ],
   })
 }

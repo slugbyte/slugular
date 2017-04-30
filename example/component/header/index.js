@@ -14,14 +14,14 @@ const Header = module.exports =  ({title, navLinks}) => {
           click: () => setState({title: state.title + '!'}),
         },
       }),
-      $.input({name: 'title', value: state.title, 
+      $.Input({name: 'title', value: state.title, 
               events: {
                 keyup: (e) => {
                   console.log(e) 
                   setState({title: e.target.value})
                 }
               }}),
-      $('nav', $.unorderedList(navAnchors)),
+      $('nav', $.UnorderedList(navAnchors)),
     ],
   })
 }

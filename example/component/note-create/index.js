@@ -4,7 +4,7 @@ const $ = require('../../../src')
 
 const {state, setState} = require('../../lib/store.js')
 
-const NoteCreate = module.exports = () => $.form([
+const NoteCreate = module.exports = () => $.Form([
   {name: 'title', placeholder: 'title'},
   {name: 'content', placeholder: 'content'},
   {type: 'submit', value: 'create note'},

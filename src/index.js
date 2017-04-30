@@ -54,11 +54,11 @@ const slugular = module.exports = (type, options) => {
 
 slugular.createStore = require('./lib/store.js')
 
-slugular.unorderedList = (items) => {
+slugular.UnorderedList = (items) => {
   return slugular('ul', items.map(item => slugular('li', [item])))
 }
 
-slugular.input = (config) => {
+slugular.Input = (config) => {
   if(config.type === 'select'){
     delete config.type
     let options = config.options.map(item => slugular('option', item))
@@ -70,14 +70,14 @@ slugular.input = (config) => {
   return slugular('input', config)
 }
 
-slugular.labelInput = (config) => {
+slugular.LabelInput = (config) => {
   if(!config.id)
     config.id = btoa(Math.random())
 
   var label = config.label
   delete config.label
   label = slugular('label', label)
-  let children = [ label , slugular.input(config)]
+  let children = [ label , slugular.Input(config)]
 
   if(config.type === 'checkbox') {
     children.reverse()
@@ -87,9 +87,9 @@ slugular.labelInput = (config) => {
   return slugular('fieldset', children)
 }
 
-slugular.form  = (inputs, submitHandler, options={}) => {
+slugular.Form  = (inputs, submitHandler, options={}) => {
   let children = inputs.map(config =>  
-                            config.label ? slugular.labelInput(config) : slugular.input(config))
+                            config.label ? slugular.LabelInput(config) : slugular.Input(config))
   return slugular('form', Object.assign(options, {
     children,
     events: {
