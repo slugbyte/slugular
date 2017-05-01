@@ -1,11 +1,10 @@
 {
   "name": "slugular",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "./src/index.js",
   "dependencies": {
-    "morphdom": "^2.3.2",
-    "nanomorph": "^4.0.5"
+    "morphdom": "^2.3.2"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
