@@ -1,0 +1,76 @@
+$primary: #aaaaff;
+$black: #000025;
+$darkergrey: #222;
+$darkgrey: #444;
+$grey: #777;
+$lightgrey: #aaa;
+$white: #fffffe;
+$error: #ff7a7a;
+$pad: 0.5em;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  color: $darkergrey;
+  list-style: none;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+html {
+  background: beige;
+  padding: 0.5em;
+}
+
+body {
+  background: white;
+  background-size: 100% 100%;
+  padding: $pad;
+}
+
+form {
+  background: white;
+
+  input {
+    padding: $pad;
+    border: 1px solid $black;
+    margin-bottom: $pad;
+
+    &:focus {
+      border: 1px solid $primary;
+    }
+  }
+}
+
+button, input[type="submit"] {
+  background: $primary;
+  border: none !important;
+
+  &:hover {
+    background: $grey !important;
+  }
+
+  &:active {
+    background: $darkergrey;
+    color: $grey;
+  }
+}
+
+.error {
+  background: $error;
+}
+
+@media screen and (min-width: 500px){
+  body {
+    width: 500px;
+    margin: 0 auto;
+  }
+}

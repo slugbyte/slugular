@@ -67,6 +67,10 @@ slugular.Input = (config) => {
     return slugular('select', config)
   }
 
+  if (config.type === 'button'){
+    return slugular('button', config)
+  }
+
   return slugular('input', config)
 }
 

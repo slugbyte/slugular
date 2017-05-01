@@ -13,11 +13,24 @@ try {
   initalState = {
     title: 'notes app',
     navLinks: [
-      {text: 'Home', path: '/'},
-      {text: 'About', path: '/#about'},
-      {text: 'Contact', path: '/#contact'},
+      {text: 'Contact', path: ''},
+      {text: 'About', path: ''},
+      {text: 'Home', path: ''},
     ],
-    notes: [],
+    notes: [ 
+      {
+        id: $.hash(),
+        editing: false,
+        title: 'titles must be 10 charaters',
+        content: 'notes must also be 10 charaters',
+      },
+      {
+        id: $.hash(),
+        editing: true,
+        title: 'double click notes to edit them',
+        content: 'change my text',
+      },
+    ],
   }
 }
 

@@ -35,8 +35,18 @@ nodeSetup.setStyles = (node, options) => {
   delete options.style
 
   if(style)
-    for(var key in style)
+    for(let key in style)
       node.style[key] = style[key]
+
+  var classes = options.classes
+  delete options.classes
+
+  for(let key in classes){
+    if(classes[key])
+      node.classList.add(key)
+    else 
+      node.classList.remove(key)
+  }
 
   return node
 }
@@ -45,9 +55,43 @@ nodeSetup.setEvents = (node, options) => {
   var events = options.events
   delete options.events
 
+  var slugularEvents = {
+    onClick: 'click',
+    onDoubleClick: 'dblclick',
+    onMouseUp: 'mouseup',
+    onMouseDown: 'mousedown',
+    onMouseEnter: 'mouseenter',
+    onMouseLeave: 'mouseleave',
+    onMouseOut: 'mouseout',
+    onMouseMove: 'mousemove',
+    onMouseOver: 'mouseover',
+    onSubmit: 'submit',
+    onBlur: 'blur', 
+    onError: 'error', 
+    onSelect: 'onselect',
+    onFocus: 'focus',
+    onFocusIn: 'focusin',
+    onFocusOut: 'focusout',
+    onLoad: 'load',
+    onUnload: 'unload',
+    onScoll: 'scroll',
+    onKeyDown: 'keydown',
+    onKeyUp: 'keyup',
+    onKeyPress: 'keypress',
+    onChange: 'change',
+  }
+
   if(events)
-    for(var key in events)
+    for(let key in events)
       node.addEventListener(key, events[key])
+
+  for(let key in slugularEvents){
+    if(options[key]){
+      node.addEventListener(slugularEvents[key], options[key])
+      delete options[key]
+    }
+  }
+    
 
   return node
 }

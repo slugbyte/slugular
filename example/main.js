@@ -1,10 +1,13 @@
 'use strict'
 
+require('./style/main.scss')
+
 const $ = window.$ = require('../src/index.js')
 const {setState, addListner} = require('./lib/store.js')
 
 const Header = require('./component/header')
 const NoteCreate = require('./component/note-create')
+const NoteList = require('./component/note-list')
 
 const App = (state) => {
   return $('div', {
@@ -12,7 +15,8 @@ const App = (state) => {
     children: [
       Header(state),
       NoteCreate(),
-      $.UnorderedList(state.notes.map(item => $('p', item.title)))
+      //$.UnorderedList(state.notes.map(item => $('p', item.title)))
+      NoteList(state),
     ],
   })
 }

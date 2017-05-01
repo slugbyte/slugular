@@ -1,0 +1,63 @@
+$button-height: 1.5em;
+
+.note {
+  background: white;
+  border: 1px solid black;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  transition: 1s;
+
+  button, input, h2, p {
+    font-size: 1em;
+    padding: 0.4em;
+    height: 2em;
+    margin-bottom: 0.5em;
+    border: 1px solid #777;
+  }
+
+  main {
+    display: block;
+    padding-bottom: 2em;
+    p {
+      width: 60%;
+      float: left;
+    }
+
+    button {
+      background: #ff7a7a;
+      width: 40%;
+      float: right;
+    }
+  }
+
+  form {
+    display: none;
+    padding-bottom: 2em;
+
+    input {
+      background: lightblue;
+    }
+
+    button {
+      background: #ff7a7a;
+      width: 40%; 
+      float: left;
+    }
+
+    input[type="submit"] {
+      width: 60%;
+      float: right;
+    }
+
+  }
+}
+
+.note.editing {
+  main {
+    display: none;
+  }
+
+  form {
+    display: block;
+  }
+}
