@@ -3,7 +3,7 @@
 require('./style/main.scss')
 
 const $ = window.$ = require('../src/index.js')
-const {state, setState, addListner} = require('./lib/store.js')
+const {state, addListner} = require('./lib/store.js')
 
 const Header = require('./component/header')
 const NoteCreate = require('./component/note-create')
@@ -21,6 +21,7 @@ const App = (state) => {
   })
 }
 
+// initalise the app with the stores state
 // add the app to the dom
 let root = App(state)
 document.body.appendChild(root)
@@ -31,7 +32,3 @@ addListner((state) => {
   console.log('state', state)
   $.render(root, App(state))
 })
-
-// trigger a state change to cause the render listener to run once 
-// on page load
-setState();
