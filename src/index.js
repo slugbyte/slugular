@@ -28,7 +28,7 @@ const slugular = module.exports = (type, options) => {
   if(options instanceof Element || options instanceof Text){
     result.appendChild(options)
     return result;
-    return 
+    return
   }
 
   if(Array.isArray(options))
@@ -92,40 +92,35 @@ slugular.LabelInput = (config) => {
 }
 
 slugular.Form  = (inputs, submitHandler, options={}) => {
-  let children = inputs.map(config =>  
+  let children = inputs.map(config =>
                             config.label ? slugular.LabelInput(config) : slugular.Input(config))
-  return slugular('form', Object.assign(options, {
-    children,
-    events: {
-      submit: (e) => {
-        e.preventDefault()
-        submitHandler(e.target, e)
-      },
-    }
-  }))
+                            return slugular('form', Object.assign(options, {
+                              children,
+                              events: {
+                                submit: (e) => {
+                                  e.preventDefault()
+                                  submitHandler(e.target, e)
+                                },
+                              }
+                            }))
 }
 
-slugular.render = (app, target) => {
-  if(!app.id)
-    throw new Error('root node of app must set id')
-  let container = document.getElementById(app.id)
-  if(container)
-    return morphdom(container, app, {
-      onBeforeElUpdated: (fromEl, toEl) => {
-        for(let key in fromEl.slugularEvents){
-          fromEl.removeEventListener(key, fromEl.slugularEvents[key])
-          toEl.removeEventListener(key, fromEl.slugularEvents[key])
-        }
+slugular.render = (container, app) => {
+  return morphdom(container, app, {
+    onBeforeElUpdated: (fromEl, toEl) => {
+      for(let key in fromEl.slugularEvents){
+        fromEl.removeEventListener(key, fromEl.slugularEvents[key])
+        toEl.removeEventListener(key, fromEl.slugularEvents[key])
+      }
 
-        for(let key in toEl.slugularEvents){
-          fromEl.slugularEvents[key] = toEl.slugularEvents[key]
-          fromEl.addEventListener(key, toEl.slugularEvents[key])
-        }
+      for(let key in toEl.slugularEvents){
+        fromEl.slugularEvents[key] = toEl.slugularEvents[key]
+        fromEl.addEventListener(key, toEl.slugularEvents[key])
+      }
 
-        return true
-      },
-    })
-  target.appendChild(app)
+      return true
+    },
+  })
 }
 
 slugular.hash = () => btoa(Math.random())
