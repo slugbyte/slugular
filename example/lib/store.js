@@ -11,7 +11,7 @@ try {
 } catch (e) {
   console.error('no state found')
   initalState = {
-    title: '(edit me) two way data binding',
+    title: '(edit me) one way data binding',
     navLinks: [
       {text: 'Contact', path: ''},
       {text: 'About', path: ''},
