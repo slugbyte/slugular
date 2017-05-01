@@ -1,65 +1,30 @@
 'use strcit'
 
 require('./_note.scss')
-
 const $ = require('../../../src')
+const NOTE = require('../../lib/note.js')
 
-const {setState, state} = require('../../lib/store.js')
-
-var deleteNote = (note) => {
-  console.log('delte', note)
-  setState({notes: state.notes.filter(item => {
-    return item.id !== note.id
-  })})
-}
-
-var updateNote = (note) => {
-  setState({notes: state.notes.map(item => {
-    console.log('note', note, item)
-    if(note.id == item.id){
-      return Object.assign(item, note)
-    }
-    return item
-  })
-  })
-}
-
-var handleSubmit = (f) => updateNote({
+var handleSubmit = note => f => NOTE.update({
+          id: note.id,
           editing: false, 
           title: f.title.value,
-          content: f.content.value,
-          id: f.getAttribute('noteid')})
+          content: f.content.value})
 
 const Note = module.exports = ({note}) => {
-  var editing = false;;
   return $('div', {
     classes: {
       note: true,
       editing: note.editing,
     },
-    attributes: {
-      noteid: note.id,
-    },
-    onDoubleClick: (e) => {
-      editing = !editing
-      updateNote({id: e.target.getAttribute('noteid'), editing: editing})
-    },
+    onDoubleClick: (e) => NOTE.update({id: note.id, editing: !note.editing}),
     children: [
       $('main', {
-        attributes: { noteid: note.id },
         children: [
-          $('h2', {
-            textContent: note.title,
-            attributes: { noteid: note.id },
-          }),
-          $('p', {
-            textContent: note.content,
-            attributes: { noteid: note.id },
-          }),
+          $('h2', note.title),
+          $('p', note.content),
           $('button', {
-            attributes: {noteid: note.id},
             textContent: 'delete',
-            onClick: (e) => deleteNote({id: e.target.getAttribute('noteid')})
+            onClick: (e) => NOTE.delete({id: note.id})
           }),
         ]
       }),
@@ -69,11 +34,10 @@ const Note = module.exports = ({note}) => {
         {
           type: 'button',
           textContent: 'cancel',
-          attributes: {noteid: note.id},
-          onClick: (e) => updateNote({id: e.target.getAttribute('noteid'), editing: false })
+          onClick: (e) => NOTE.update({id: note.id , editing: false })
         },
         {type: 'submit', value: 'update note'},
-      ], handleSubmit, {attributes: {noteid: note.id}})
+      ], handleSubmit(note))
     ],
   })
 }

@@ -1,4 +1,5 @@
-$primary: #aaaaff;
+//$primary: #d9ecf4;
+$primary: beige;
 $black: #000025;
 $darkergrey: #222;
 $darkgrey: #444;
@@ -26,7 +27,7 @@ $pad: 0.5em;
 }
 
 html {
-  background: beige;
+  background: lightblue;
   padding: 0.5em;
 }
 
@@ -40,8 +41,9 @@ form {
   background: white;
 
   input {
+    background: $primary;
     padding: $pad;
-    border: 1px solid $black;
+    border: 1px solid lightblue;
     margin-bottom: $pad;
 
     &:focus {
@@ -51,16 +53,18 @@ form {
 }
 
 button, input[type="submit"] {
-  background: $primary;
-  border: none !important;
+  background: $white;
+  border: 2px solid #ff7a7a !important;
+  border-radius: 0.25em;
 
   &:hover {
-    background: $grey !important;
+    background: #ff7a7a !important;
   }
 
   &:active {
-    background: $darkergrey;
-    color: $grey;
+    background: $darkergrey !important;
+    border: 2px solid $darkergrey !important;
+    color: #ff7a7a;
   }
 }
 

@@ -54,6 +54,7 @@ nodeSetup.setStyles = (node, options) => {
 nodeSetup.setEvents = (node, options) => {
   var events = options.events
   delete options.events
+  node.slugularEvents = {}
 
   var slugularEvents = {
     onClick: 'click',
@@ -82,12 +83,15 @@ nodeSetup.setEvents = (node, options) => {
   }
 
   if(events)
-    for(let key in events)
+    for(let key in events){
       node.addEventListener(key, events[key])
+      node.slugularEvents[key] = events[key]
+    }
 
   for(let key in slugularEvents){
     if(options[key]){
       node.addEventListener(slugularEvents[key], options[key])
+      node.slugularEvents[slugularEvents[key]] = options[key]
       delete options[key]
     }
   }

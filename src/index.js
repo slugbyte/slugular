@@ -110,7 +110,21 @@ slugular.render = (app, target) => {
     throw new Error('root node of app must set id')
   let container = document.getElementById(app.id)
   if(container)
-    return morphdom(container, app)
+    return morphdom(container, app, {
+      onBeforeElUpdated: (fromEl, toEl) => {
+        for(let key in fromEl.slugularEvents){
+          fromEl.removeEventListener(key, fromEl.slugularEvents[key])
+          toEl.removeEventListener(key, fromEl.slugularEvents[key])
+        }
+
+        for(let key in toEl.slugularEvents){
+          fromEl.slugularEvents[key] = toEl.slugularEvents[key]
+          fromEl.addEventListener(key, toEl.slugularEvents[key])
+        }
+
+        return true
+      },
+    })
   target.appendChild(app)
 }
 

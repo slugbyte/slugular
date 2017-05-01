@@ -1,38 +1,26 @@
 .navbar {
   height: 50px;
+  margin-bottom: 0.5em;;
 
-  h1, ul {
+  h1, input {
+    width: calc(50% - 0.25em);
     height: 100%;
+    font-size: 1em;
+    line-height: 35px;
+    font-weight: bold;
+    padding: 0.5em;
+    vertical-align: center;
   }
 
   h1 {
-    //border: 1px solid blue;
-    width: 50%;
     float: left;
-    padding-left: 0.25em;
+    border: 1px solid lightblue;
+    overflow: scroll;
   }
-
-  ul {
-    width: 50%;
+  
+  input {
     float: right;
-  }
-
-  li {
-    float: right;
-    display: inline-block;
-    width: calc(100% / 3 - 1em);
-    margin-left: 0.5em;
-    text-align: center;
-
-    a {
-      width: 100%;
-      height: 100%;
-      background: #ff7a7a;;
-      text-decoration: none;
-      padding: 0.5em;
-      &:hover {
-        background: lightblue;
-      }
-    }
+    border: 1px solid lightblue;
+    background: beige;
   }
 }

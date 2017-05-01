@@ -11,7 +11,7 @@ try {
 } catch (e) {
   console.error('no state found')
   initalState = {
-    title: 'notes app',
+    title: '(edit me) two way data binding',
     navLinks: [
       {text: 'Contact', path: ''},
       {text: 'About', path: ''},
@@ -21,14 +21,14 @@ try {
       {
         id: $.hash(),
         editing: false,
-        title: 'titles must be 10 charaters',
-        content: 'notes must also be 10 charaters',
+        title: 'Create a note, make sure title and content are 10 characters',
+        content: 'Click delete to remove a note',
       },
       {
         id: $.hash(),
         editing: true,
-        title: 'double click notes to edit them',
-        content: 'change my text',
+        title: 'Double click notes to edit them',
+        content: 'Change my text',
       },
     ],
   }

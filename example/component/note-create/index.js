@@ -33,6 +33,7 @@ var handleSubmit = (f) => {
     complete: false,
     editing: false,
   } 
+
   setState({notes: [note].concat(state.notes)})
   resetFormState()
 }
@@ -76,7 +77,6 @@ const NoteCreate = module.exports = () => $.Form([
   },
   {type: 'submit', value: 'create note'},
 ], handleSubmit, {className: 'note-create'})
-
 
 // reset form state on page load
 resetFormState()
