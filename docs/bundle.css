@@ -12,7 +12,7 @@
     outline: none; }
 
 html {
-  background: beige;
+  background: lightblue;
   padding: 0.5em; }
 
 body {
@@ -23,20 +23,23 @@ body {
 form {
   background: white; }
   form input {
+    background: beige;
     padding: 0.5em;
-    border: 1px solid #000025;
+    border: 1px solid lightblue;
     margin-bottom: 0.5em; }
     form input:focus {
-      border: 1px solid #aaaaff; }
+      border: 1px solid beige; }
 
 button, input[type="submit"] {
-  background: #aaaaff;
-  border: none !important; }
+  background: #fffffe;
+  border: 2px solid #ff7a7a !important;
+  border-radius: 0.25em; }
   button:hover, input[type="submit"]:hover {
-    background: #777 !important; }
+    background: #ff7a7a !important; }
   button:active, input[type="submit"]:active {
-    background: #222;
-    color: #777; }
+    background: #222 !important;
+    border: 2px solid #222 !important;
+    color: #ff7a7a; }
 
 .error {
   background: #ff7a7a; }
@@ -46,30 +49,24 @@ button, input[type="submit"] {
     width: 500px;
     margin: 0 auto; } }
 .navbar {
-  height: 50px; }
-  .navbar h1, .navbar ul {
-    height: 100%; }
+  height: 50px;
+  margin-bottom: 0.5em; }
+  .navbar h1, .navbar input {
+    width: calc(50% - 0.25em);
+    height: 100%;
+    font-size: 1em;
+    line-height: 35px;
+    font-weight: bold;
+    padding: 0.5em;
+    vertical-align: center; }
   .navbar h1 {
-    width: 50%;
     float: left;
-    padding-left: 0.25em; }
-  .navbar ul {
-    width: 50%;
-    float: right; }
-  .navbar li {
+    border: 1px solid lightblue;
+    overflow: scroll; }
+  .navbar input {
     float: right;
-    display: inline-block;
-    width: calc(100% / 3 - 1em);
-    margin-left: 0.5em;
-    text-align: center; }
-    .navbar li a {
-      width: 100%;
-      height: 100%;
-      background: #ff7a7a;
-      text-decoration: none;
-      padding: 0.5em; }
-      .navbar li a:hover {
-        background: lightblue; }
+    border: 1px solid lightblue;
+    background: beige; }
 .note-create {
   margin-bottom: 1em; }
 .note {
@@ -83,28 +80,25 @@ button, input[type="submit"] {
     padding: 0.4em;
     height: 2em;
     margin-bottom: 0.5em;
-    border: 1px solid #777; }
+    border: 1px solid lightblue; }
   .note main {
     display: block;
     padding-bottom: 2em; }
     .note main p {
-      width: 60%;
+      width: 80%;
       float: left; }
     .note main button {
       background: #ff7a7a;
-      width: 40%;
+      width: calc(20% - 0.5em);
       float: right; }
   .note form {
     display: none;
     padding-bottom: 2em; }
-    .note form input {
-      background: lightblue; }
     .note form button {
-      background: #ff7a7a;
-      width: 40%;
+      width: calc(50% - 0.25em);
       float: left; }
     .note form input[type="submit"] {
-      width: 60%;
+      width: calc(50% - 0.25em);
       float: right; }
 
 .note.editing main {
