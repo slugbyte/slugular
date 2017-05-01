@@ -8,10 +8,10 @@ module.exports = {
   entry: `${__dirname}/example/main.js`,
   output: {
     path: `${__dirname}/docs`,
-    filename: 'bundle.js',
+    filename: 'bundle-[hash].js',
   },
   plugins: [
-    new ExtractPlugin('bundle.css'),
+    new ExtractPlugin('bundle-[hash].css'),
     new HtmlPlugin(),
   ],
   module: {
